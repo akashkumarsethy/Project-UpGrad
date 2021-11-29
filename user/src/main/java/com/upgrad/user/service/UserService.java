@@ -8,6 +8,5 @@ public interface UserService {
     public User createUser(User user);
     public Optional<User> getUser(int userId);
     public void deleteUser(int userId);
-    public User updateUser(int userId,User user):
-//    public User getUserByCity(String city);
+    public User updateUser(int Id,User user);
 }

@@ -25,7 +25,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Optional<User> getUser(int userId) {
-        return userRepository.findById(userId);
+        Optional<User> user = userRepository.findById(userId);
+        return user;
     }
 
     @Override
@@ -35,10 +36,10 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User updateUser(int userId, User user) {
-        Optional<User> userFromDb = userRepository.findById(userId);
-        userFromDb.setFirstname("Akash Kumar");
-        userFromDb.setLastname("Sethy");
-        userFromDb.setCity("Cuttack");
+        User userFromDb = userRepository.getById(userId);
+        userFromDb.setFirstName(user.getFirstName());
+        userFromDb.setLastName(user.getLastName());
+        userFromDb.setCity(user.getCity());
         userRepository.save(userFromDb);
         return  userFromDb;
     }

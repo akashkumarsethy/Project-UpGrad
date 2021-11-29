@@ -35,25 +35,22 @@ public class UserController {
         return new ResponseEntity(savedUser, HttpStatus.OK);
     }
    @GetMapping(value="/user/{Id}")
-    public ResponseEntity getUser(@PathVariable int Id){
+    public ResponseEntity getUser(@PathVariable(name = "Id") int Id){
         Optional<User> savedUser=userService.getUser(Id);
         return new ResponseEntity(savedUser, HttpStatus.OK);
     }
     @DeleteMapping(value= "/user/{Id}")
-    public ResponseEntity deleteUser(@PathVariable int Id){
+    public ResponseEntity deleteUser(@PathVariable(name = "Id") int Id){
         userService.deleteUser(Id);
         return ResponseEntity.ok("User Deleted");
     }
 
-//    @PutMapping(value = "/user/{id}")
-//    public ResponseEntity updateUser(@PathVariable int Id, @RequestBody UserDTO userDTO) {
-//
-//        Optional<User> user = userService.getUser(Id);
-//
-//        updatedUserEntity.setRole(roleEntity);
-//
-//        userService.updateUser(userUuid, updatedUserEntity);
-//        return ResponseBuilder.ok().build();
-//    }
+    @PutMapping(value = "/user/{Id}")
+    public ResponseEntity updateUser(@PathVariable(name = "Id") int Id, @RequestBody UserDTO userDTO) {
+
+        User user = modelMapper.map(userDTO,User.class);
+        User updatedUser=userService.updateUser(Id, user);
+        return new ResponseEntity(updatedUser, HttpStatus.OK);
+    }
 
 }
