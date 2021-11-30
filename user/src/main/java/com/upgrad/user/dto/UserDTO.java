@@ -1,8 +1,18 @@
 package com.upgrad.user.dto;
 
-public class UserDTO {private String firstName;
+public class UserDTO {
+    private int userId;
+    private String firstName;
     private String lastName;
     private String city;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -28,7 +38,8 @@ public class UserDTO {private String firstName;
         this.city = city;
     }
 
-    public UserDTO(String firstName, String lastName, String city) {
+    public UserDTO(int userId, String firstName, String lastName, String city) {
+        this.userId=userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;

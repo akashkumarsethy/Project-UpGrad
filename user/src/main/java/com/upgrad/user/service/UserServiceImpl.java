@@ -5,6 +5,7 @@ import com.upgrad.user.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,9 +25,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Optional<User> getUser(int userId) {
-        Optional<User> user = userRepository.findById(userId);
+    public User getUser(int userId) {
+        User user = userRepository.findById(userId).get();
         return user;
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     @Override
