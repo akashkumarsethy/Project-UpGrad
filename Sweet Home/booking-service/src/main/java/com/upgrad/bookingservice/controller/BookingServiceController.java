@@ -5,7 +5,6 @@ import com.upgrad.bookingservice.dto.PaymentDTO;
 import com.upgrad.bookingservice.entity.BookingInfoEntity;
 import com.upgrad.bookingservice.service.BookingService;
 import com.upgrad.bookingservice.util.POJOConverter;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

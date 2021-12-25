@@ -18,13 +18,16 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public Integer makeATransaction(TransactionDetailsEntity transactionDetailsEntity) {
+        //Saving the transaction details to Database
         TransactionDetailsEntity savedData = _paymentServiceDao.save(transactionDetailsEntity);
+        //Returning the transactionId
         return savedData.getTransactionId();
 
     }
 
     @Override
     public TransactionDetailsEntity getTransactionById(int transactionId) throws RecordNotFoundException {
+       //Getting the transaction details from Databse using transactionId
         return  _paymentServiceDao.findById(transactionId).orElseThrow(
                 ()-> new RecordNotFoundException("Invalid Transaction ID")
         );
