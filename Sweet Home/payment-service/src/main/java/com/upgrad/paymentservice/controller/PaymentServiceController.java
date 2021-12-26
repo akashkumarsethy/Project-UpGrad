@@ -30,7 +30,7 @@ public class PaymentServiceController {
     }
 
     @GetMapping(value = "/transaction/{transactionId}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<TransactionDetailsDTO> makePayment(@PathVariable int transactionId){
+    public ResponseEntity<TransactionDetailsDTO> getTransactionDetails(@PathVariable int transactionId){
         TransactionDetailsEntity transactionDetailsEntity =_paymentService.getTransactionById(transactionId);
         TransactionDetailsDTO transactionDetailsDTO=POJOConverter.transactionDetailsEntitytoDTO(transactionDetailsEntity);
         return new ResponseEntity<>(transactionDetailsDTO, HttpStatus.OK);
